@@ -1,224 +1,427 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marble Falls Cemetery Association | Preserving Our Heritage</title>
-    <meta name="description" content="Official website of the Marble Falls Cemetery Association. A 501(c)(3) nonprofit dedicated to the preservation and care of our historic grounds.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Marble Falls Cemetery Association | 501(c)(3) Nonprofit</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;600&display=swap');
-        
+        /* CSS VARIABLES & RESET */
         :root {
-            --primary-stone: #4a5568;
-            --deep-green: #2d3748;
+            --primary-color: #2c4a3b; /* Deep respectful green */
+            --secondary-color: #d4af37; /* Soft gold */
+            --text-color: #333333;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+            --footer-bg: #1a1a1a;
         }
 
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3, .serif { font-family: 'Libre+Baskerville', serif; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-        .hero-gradient {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1596272553934-297745778a83?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        /* NAVIGATION */
+        nav {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo span {
+            font-size: 0.8rem;
+            color: #666;
+            font-weight: normal;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .donate-btn {
+            background-color: var(--primary-color);
+            color: var(--white) !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(44, 74, 59, 0.7), rgba(44, 74, 59, 0.7)), url('https://images.unsplash.com/photo-1590623101569-450f37e41b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 5%;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            background-color: var(--secondary-color);
+            color: var(--footer-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        /* SECTIONS GENERAL */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 10px auto;
+        }
+
+        /* ABOUT SECTION */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* SERVICES/FEATURES SECTION */
+        .bg-light {
+            background-color: var(--light-bg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h4 {
+            color: var(--primary-color);
+            margin: 1rem 0;
+            font-size: 1.5rem;
+        }
+
+        /* POLICIES SECTION */
+        .policies-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .policy-block {
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 1.5rem;
+        }
+
+        .policy-block h4 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        /* CONTACT SECTION */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 3rem;
+            border-radius: 10px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info strong {
+            margin-right: 10px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #1a2e24;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 5%;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            color: #ccc;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* In a real app, implement a hamburger menu */
+            }
+            .about-content, .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 leading-relaxed">
+<body>
 
-    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex-shrink-0 flex flex-col">
-                    <span class="text-xl font-bold tracking-tight text-slate-800 serif uppercase">Marble Falls</span>
-                    <span class="text-xs tracking-widest text-slate-500 uppercase">Cemetery Association</span>
-                </div>
-                <div class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-wider">
-                    <a href="#home" class="hover:text-emerald-700 transition">Home</a>
-                    <a href="#history" class="hover:text-emerald-700 transition">History</a>
-                    <a href="#services" class="hover:text-emerald-700 transition">Services</a>
-                    <a href="#donate" class="text-emerald-600 font-bold hover:text-emerald-800 transition">Donate</a>
-                    <a href="#contact" class="hover:text-emerald-700 transition">Contact</a>
-                </div>
-                <div class="md:hidden">
-                    <button class="text-gray-600"><i class="fa-solid fa-bars text-2xl"></i></button>
-                </div>
-            </div>
-        </div>
+    <nav>
+        <a href="#home" class="logo">
+            Marble Falls Cemetery
+            <span>Association</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Our Work</a></li>
+            <li><a href="#policies">Policies</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact" class="donate-btn">Support Us</a></li>
+        </ul>
     </nav>
 
-    <section id="home" class="hero-gradient h-[80vh] flex items-center justify-center text-center text-white px-4">
-        <div class="max-w-3xl">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Honoring the Past, Preserving the Future</h1>
-            <p class="text-lg md:text-xl mb-8 font-light italic">A historic landmark and sacred space for the Marble Falls community since the late 19th century.</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#history" class="bg-white text-gray-900 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">Our Legacy</a>
-                <a href="#donate" class="bg-emerald-700 text-white px-8 py-3 rounded-full font-semibold hover:bg-emerald-800 transition">Support Our Mission</a>
+    <section id="home" class="hero">
+        <span class="badge">Official 501(c)(3) Nonprofit Organization</span>
+        <h1>Preserving Our Heritage, Honoring Our Loved Ones</h1>
+        <p>The Marble Falls Cemetery Association is dedicated to the perpetual care, beautification, and historical preservation of the resting places of our community's ancestors.</p>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Our Association</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>A Legacy of Respect in Texas</h3>
+                <p>Founded on the principles of community, respect, and historical preservation, the <strong>Marble Falls Cemetery Association</strong> serves as the steward of our community's most sacred grounds in Marble Falls, Texas. Our mission is to provide a serene, meticulously maintained environment where families can peacefully visit and remember their loved ones.</p>
+                <p>As a registered <strong>501(c)(3) nonprofit organization</strong>, we operate entirely through the dedication of our volunteers, board members, and the generous tax-deductible contributions of families and local supporters. Every dollar donated goes directly toward the landscaping, infrastructure maintenance, and long-term preservation of the cemetery.</p>
+                <p>We believe that a well-cared-for cemetery is a reflection of a community's soul. By maintaining these grounds, we are not just caring for the past; we are providing a beautiful, comforting space for the generations of today and tomorrow.</p>
+            </div>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1599855562018-b2dc4ba15ce5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Beautiful serene nature landscape representing peace">
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-white">
-        <div class="max-w-5xl mx-auto px-4 text-center">
-            <span class="text-emerald-600 font-bold uppercase tracking-widest text-sm">Our Mission</span>
-            <h2 class="text-3xl md:text-4xl mt-4 mb-8">A 501(c)(3) Nonprofit Organization</h2>
-            <p class="text-xl text-gray-600 leading-loose italic">
-                The Marble Falls Cemetery Association is dedicated to the perpetual care, maintenance, and historical preservation of our community’s final resting places. Through the generosity of donors and the dedication of our volunteers, we ensure that every monument tells a story and every family find peace within our gates.
-            </p>
-        </div>
-    </section>
-
-    <section id="history" class="py-20 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-            <div class="rounded-lg overflow-hidden shadow-2xl border-8 border-white">
-                <img src="https://images.unsplash.com/photo-1621360841013-c7683c659ec6?q=80&w=1932&auto=format&fit=crop" alt="Historic Headstone" class="w-full h-full object-cover">
+    <section id="services" class="bg-light">
+        <h2 class="section-title">Our Commitments</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1416879598446-ce1349547ea8?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Grounds Maintenance" style="width:100%; height:150px; object-fit:cover; border-radius:5px;">
+                <h4>Grounds Maintenance</h4>
+                <p>We ensure the grass is mowed, trees are pruned, and pathways are cleared year-round, providing a dignified and safe environment for all visitors.</p>
             </div>
-            <div>
-                <h2 class="text-4xl mb-6">Tracing Our Roots</h2>
-                <div class="space-y-4 text-gray-700">
-                    <p>Established during the founding years of Marble Falls, our cemetery serves as a silent chronicle of the pioneers, leaders, and families who built this region. From the granite-carved markers of the 1800s to the modern memorial gardens of today, we provide a bridge between generations.</p>
-                    <p>As a non-profit association, we operate independently of the municipal government. This means our beauty and stability depend entirely on the support of our community. We handle landscaping, security, historical documentation, and infrastructure improvements.</p>
-                    <ul class="list-disc pl-5 space-y-2">
-                        <li>Official State Historical Markers on site.</li>
-                        <li>Veterans Memorial Row honoring local heroes.</li>
-                        <li>Rare flora and century-old oak preservation.</li>
-                    </ul>
-                </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1533035353720-f1c6a75cd8ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Historical Preservation" style="width:100%; height:150px; object-fit:cover; border-radius:5px;">
+                <h4>Historical Preservation</h4>
+                <p>We carefully monitor and restore aging monuments, ensuring the rich history of Marble Falls and its founding families is never lost to time.</p>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1450101499163-c8848c66cb85?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Record Keeping" style="width:100%; height:150px; object-fit:cover; border-radius:5px;">
+                <h4>Genealogy & Records</h4>
+                <p>We maintain accurate maps and interment records to assist families and historians in locating gravesites and tracing their family lineage.</p>
             </div>
         </div>
     </section>
 
-    <section id="donate" class="py-20 bg-emerald-900 text-white">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <i class="fa-solid fa-hands-holding-child text-5xl mb-6 text-emerald-400"></i>
-            <h2 class="text-4xl mb-6">Invest in History</h2>
-            <p class="text-xl mb-10 opacity-90">Your contributions are tax-deductible under our 501(c)(3) status. Every dollar goes directly toward the landscaping, repair of historic markers, and the long-term sustainability of the grounds.</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <div class="p-6 bg-white/10 rounded-lg">
-                    <h3 class="text-2xl font-bold">$50</h3>
-                    <p class="text-sm">Seasonal Flower Care</p>
-                </div>
-                <div class="p-6 bg-white/10 rounded-lg">
-                    <h3 class="text-2xl font-bold">$250</h3>
-                    <p class="text-sm">Marker Restoration</p>
-                </div>
-                <div class="p-6 bg-white/10 rounded-lg border-2 border-emerald-400">
-                    <h3 class="text-2xl font-bold">$1,000+</h3>
-                    <p class="text-sm">Perpetual Care Founder</p>
-                </div>
+    <section id="policies">
+        <h2 class="section-title">Rules & Policies</h2>
+        <div class="policies-container">
+            
+            <div class="policy-block">
+                <h4>Cemetery Rules & Regulations</h4>
+                <p>To maintain the solemnity and beauty of the grounds, we ask all visitors to adhere to the following guidelines:</p>
+                <ul>
+                    <li><strong>Visiting Hours:</strong> The cemetery is open to the public from dawn until dusk. Nighttime visitation is strictly prohibited.</li>
+                    <li><strong>Floral Arrangements:</strong> Fresh cut flowers are encouraged. Artificial flowers are permitted but may be removed by groundskeepers when they become faded or weathered. Glass containers are strictly prohibited for safety reasons.</li>
+                    <li><strong>Decorations:</strong> Fences, borders, solar lights, and excessive ornaments around individual gravesites impede mowing and maintenance. The Association reserves the right to remove non-compliant items.</li>
+                    <li><strong>Pets:</strong> Pets must be leashed at all times, and owners must clean up after them.</li>
+                </ul>
             </div>
-            <button class="bg-white text-emerald-900 px-12 py-4 rounded-full font-bold text-lg hover:shadow-xl transition transform hover:-translate-y-1">Make a Secure Donation</button>
+
+            <div class="policy-block">
+                <h4>Privacy Policy</h4>
+                <p>The Marble Falls Cemetery Association respects your privacy. Any personal information collected through inquiries, plot purchases, or donations (including names, addresses, and email addresses) is used strictly for internal record-keeping and communication. We do not sell, rent, or share your personal information with third parties unless required by law.</p>
+            </div>
+
+            <div class="policy-block">
+                <h4>Terms of Use & 501(c)(3) Disclosure</h4>
+                <p>This website is provided for informational purposes. The Marble Falls Cemetery Association is an official 501(c)(3) tax-exempt nonprofit organization. Contributions are deductible to the extent allowed by law. By using this website, you agree to do so respectfully and acknowledge that all historical records and images provided herein are property of the Association.</p>
+            </div>
+
         </div>
     </section>
 
-    <section id="contact" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid md:grid-cols-2 gap-16">
-                <div>
-                    <h2 class="text-4xl mb-6">Get In Touch</h2>
-                    <p class="mb-8 text-gray-600">Whether you are researching genealogy, inquiring about plot availability, or looking to volunteer, we are here to assist you.</p>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <i class="fa-solid fa-location-dot mt-1 mr-4 text-emerald-700"></i>
-                            <div>
-                                <p class="font-bold">Mailing & Physical Address</p>
-                                <p>404 S AVENUE M<br>MARBLE FALLS, TX 78654</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fa-solid fa-envelope mt-1 mr-4 text-emerald-700"></i>
-                            <div>
-                                <p class="font-bold">Email Us</p>
-                                <a href="mailto:support@marblefallscemeteryassoc.org" class="text-emerald-700 hover:underline">support@marblefallscemeteryassoc.org</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <form class="bg-gray-50 p-8 rounded-xl shadow-inner">
-                    <div class="grid grid-cols-2 gap-4 mb-4">
-                        <input type="text" placeholder="First Name" class="p-3 border rounded">
-                        <input type="text" placeholder="Last Name" class="p-3 border rounded">
-                    </div>
-                    <input type="email" placeholder="Email Address" class="w-full p-3 border rounded mb-4">
-                    <textarea placeholder="How can we help you?" rows="5" class="w-full p-3 border rounded mb-4"></textarea>
-                    <button class="w-full bg-slate-800 text-white py-3 rounded font-bold hover:bg-slate-900 transition">Send Message</button>
+    <section id="contact" class="bg-light">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <p>Whether you have questions about purchasing a plot, locating a loved one, or making a tax-deductible donation to our 501(c)(3) fund, we are here to help.</p>
+                <br>
+                <p><strong>Mailing Address:</strong></p>
+                <p>404 S AVENUE M<br>MARBLE FALLS, TX 78654</p>
+                <br>
+                <p><strong>Email:</strong></p>
+                <p><a href="mailto:support@marblefallscemeteryassoc.org" style="color:var(--white);">support@marblefallscemeteryassoc.org</a></p>
+                <br>
+                <p style="font-size: 0.9rem; margin-top: 20px;"><em>*Please note that as a volunteer-run organization, it may take 2-3 business days for us to respond to inquiries.</em></p>
+            </div>
+
+            <div class="contact-form">
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you for contacting the Marble Falls Cemetery Association. We will reply shortly.');">
+                    <input type="text" name="name" placeholder="Your Full Name" required>
+                    <input type="email" name="email" placeholder="Your Email Address" required>
+                    <input type="text" name="subject" placeholder="Subject (e.g., Plot Inquiry, Donation, Genealogy)">
+                    <textarea name="message" rows="6" placeholder="How can we help you?" required></textarea>
+                    <button type="submit">Send Message</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <footer class="bg-slate-900 text-gray-400 py-12">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8 mb-12">
-                <div class="col-span-2">
-                    <h3 class="text-white text-lg font-bold mb-4 uppercase">Marble Falls Cemetery Association</h3>
-                    <p class="text-sm">A registered 501(c)(3) nonprofit corporation. Donations are tax-deductible to the extent allowed by law. Our mission is to preserve the resting place of our ancestors with dignity and grace.</p>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-widest">Resources</h4>
-                    <ul class="text-sm space-y-2">
-                        <li><a href="#" class="hover:text-white transition">Plot Search</a></li>
-                        <li><a href="#" class="hover:text-white transition">Rules & Regulations</a></li>
-                        <li><a href="#" class="hover:text-white transition">Board of Directors</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-widest">Legal</h4>
-                    <ul class="text-sm space-y-2">
-                        <li><button onclick="toggleModal('privacy')" class="hover:text-white transition">Privacy Policy</button></li>
-                        <li><button onclick="toggleModal('refund')" class="hover:text-white transition">Refund Policy</button></li>
-                        <li><button onclick="toggleModal('terms')" class="hover:text-white transition">Terms of Service</button></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-slate-800 pt-8 text-center text-xs">
-                <p>&copy; 2024 Marble Falls Cemetery Association. All Rights Reserved. Built for the community.</p>
-            </div>
-        </div>
+    <footer>
+        <p>&copy; 2026 Marble Falls Cemetery Association. All Rights Reserved.</p>
+        <p>A Registered 501(c)(3) Nonprofit Organization.</p>
+        <p>404 S AVENUE M, MARBLE FALLS, TX 78654 | support@marblefallscemeteryassoc.org</p>
     </footer>
 
-    <div id="modal-container" class="hidden fixed inset-0 bg-black/80 z-[100] flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8 relative">
-            <button onclick="toggleModal()" class="absolute top-4 right-4 text-2xl">&times;</button>
-            <div id="modal-content">
-                </div>
-        </div>
-    </div>
-
-    <script>
-        function toggleModal(type) {
-            const container = document.getElementById('modal-container');
-            const content = document.getElementById('modal-content');
-            
-            if (!type) {
-                container.classList.add('hidden');
-                return;
-            }
-
-            const policies = {
-                privacy: `
-                    <h2 class="text-2xl font-bold mb-4">Privacy Policy</h2>
-                    <p class="mb-4">Marble Falls Cemetery Association respects your privacy. We collect personal information (name, email) only when voluntarily submitted via our contact or donation forms.</p>
-                    <p class="mb-4">We do not sell or trade your personal information to third parties. Data is used strictly for internal communication and tax receipting purposes.</p>
-                `,
-                refund: `
-                    <h2 class="text-2xl font-bold mb-4">Refund Policy</h2>
-                    <p class="mb-4">As a 501(c)(3) nonprofit, donations are generally non-refundable. However, if a donation was made in error or for an incorrect amount, please contact us at support@marblefallscemeteryassoc.org within 30 days for assistance.</p>
-                `,
-                terms: `
-                    <h2 class="text-2xl font-bold mb-4">Terms of Service</h2>
-                    <p class="mb-4">By using this website, you agree to respect the dignity of the grounds and the privacy of the families we serve. All historical content and photography are property of the Association.</p>
-                    <p class="mb-4">Visitors to the physical cemetery grounds must adhere to posted visiting hours and landscaping rules.</p>
-                `
-            };
-
-            content.innerHTML = policies[type];
-            container.classList.remove('hidden');
-        }
-    </script>
 </body>
 </html>
