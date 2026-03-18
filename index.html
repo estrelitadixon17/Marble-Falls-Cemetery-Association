@@ -65,6 +65,7 @@
             list-style: none;
             display: flex;
             gap: 2rem;
+            align-items: center;
         }
 
         .nav-links a {
@@ -83,12 +84,18 @@
             color: var(--white) !important;
             padding: 0.5rem 1.5rem;
             border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .donate-btn:hover {
+            background-color: #1a2e24;
         }
 
         /* HERO SECTION */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(44, 74, 59, 0.7), rgba(44, 74, 59, 0.7)), url('https://images.unsplash.com/photo-1590623101569-450f37e41b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            /* Using a reliable nature placeholder image */
+            background: linear-gradient(rgba(44, 74, 59, 0.75), rgba(44, 74, 59, 0.75)), url('https://picsum.photos/id/28/1920/1080') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -103,6 +110,7 @@
             font-size: 3.5rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            max-width: 900px;
         }
 
         .hero p {
@@ -119,6 +127,9 @@
             font-weight: bold;
             margin-bottom: 1rem;
             display: inline-block;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
         }
 
         /* SECTIONS GENERAL */
@@ -157,14 +168,15 @@
         }
 
         .about-text p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             text-align: justify;
         }
 
         .about-img img {
             width: 100%;
             border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            display: block;
         }
 
         /* SERVICES/FEATURES SECTION */
@@ -183,7 +195,7 @@
             padding: 2rem;
             border-radius: 8px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             transition: transform 0.3s ease;
         }
 
@@ -191,9 +203,17 @@
             transform: translateY(-5px);
         }
 
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+        }
+
         .service-card h4 {
             color: var(--primary-color);
-            margin: 1rem 0;
+            margin-bottom: 1rem;
             font-size: 1.5rem;
         }
 
@@ -204,15 +224,27 @@
         }
 
         .policy-block {
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             border-left: 4px solid var(--secondary-color);
             padding-left: 1.5rem;
+            background-color: var(--light-bg);
+            padding: 1.5rem 1.5rem 1.5rem 2rem;
+            border-radius: 0 8px 8px 0;
         }
 
         .policy-block h4 {
             font-size: 1.4rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             color: var(--primary-color);
+        }
+
+        .policy-block ul {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .policy-block li {
+            margin-bottom: 0.5rem;
         }
 
         /* CONTACT SECTION */
@@ -238,18 +270,26 @@
         .contact-info p {
             margin-bottom: 1rem;
             font-size: 1.1rem;
-            display: flex;
-            align-items: center;
         }
 
-        .contact-info strong {
-            margin-right: 10px;
+        .contact-info a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
         }
 
         .contact-form {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
         .contact-form input, .contact-form textarea {
@@ -258,6 +298,7 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 1rem;
+            font-family: inherit;
         }
 
         .contact-form button {
@@ -269,6 +310,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background 0.3s;
+            font-weight: bold;
         }
 
         .contact-form button:hover {
@@ -291,13 +333,16 @@
         /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
             .nav-links {
-                display: none; /* In a real app, implement a hamburger menu */
+                display: none; 
             }
             .about-content, .contact-container {
                 grid-template-columns: 1fr;
             }
             .hero h1 {
                 font-size: 2.5rem;
+            }
+            .logo span {
+                display: none;
             }
         }
     </style>
@@ -320,7 +365,7 @@
     </nav>
 
     <section id="home" class="hero">
-        <span class="badge">Official 501(c)(3) Nonprofit Organization</span>
+        <span class="badge">Official 501(c)(3) Nonprofit</span>
         <h1>Preserving Our Heritage, Honoring Our Loved Ones</h1>
         <p>The Marble Falls Cemetery Association is dedicated to the perpetual care, beautification, and historical preservation of the resting places of our community's ancestors.</p>
     </section>
@@ -335,7 +380,7 @@
                 <p>We believe that a well-cared-for cemetery is a reflection of a community's soul. By maintaining these grounds, we are not just caring for the past; we are providing a beautiful, comforting space for the generations of today and tomorrow.</p>
             </div>
             <div class="about-img">
-                <img src="https://images.unsplash.com/photo-1599855562018-b2dc4ba15ce5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Beautiful serene nature landscape representing peace">
+                <img src="https://picsum.photos/id/114/800/600" alt="Beautiful serene nature landscape representing peace">
             </div>
         </div>
     </section>
@@ -344,17 +389,17 @@
         <h2 class="section-title">Our Commitments</h2>
         <div class="services-grid">
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1416879598446-ce1349547ea8?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Grounds Maintenance" style="width:100%; height:150px; object-fit:cover; border-radius:5px;">
+                <img src="https://picsum.photos/id/163/400/300" alt="Grounds Maintenance">
                 <h4>Grounds Maintenance</h4>
                 <p>We ensure the grass is mowed, trees are pruned, and pathways are cleared year-round, providing a dignified and safe environment for all visitors.</p>
             </div>
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1533035353720-f1c6a75cd8ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Historical Preservation" style="width:100%; height:150px; object-fit:cover; border-radius:5px;">
+                <img src="https://picsum.photos/id/122/400/300" alt="Historical Preservation">
                 <h4>Historical Preservation</h4>
                 <p>We carefully monitor and restore aging monuments, ensuring the rich history of Marble Falls and its founding families is never lost to time.</p>
             </div>
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1450101499163-c8848c66cb85?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Record Keeping" style="width:100%; height:150px; object-fit:cover; border-radius:5px;">
+                <img src="https://picsum.photos/id/24/400/300" alt="Record Keeping">
                 <h4>Genealogy & Records</h4>
                 <p>We maintain accurate maps and interment records to assist families and historians in locating gravesites and tracing their family lineage.</p>
             </div>
@@ -400,9 +445,9 @@
                 <p>404 S AVENUE M<br>MARBLE FALLS, TX 78654</p>
                 <br>
                 <p><strong>Email:</strong></p>
-                <p><a href="mailto:support@marblefallscemeteryassoc.org" style="color:var(--white);">support@marblefallscemeteryassoc.org</a></p>
+                <p><a href="mailto:support@marblefallscemeteryassoc.org">support@marblefallscemeteryassoc.org</a></p>
                 <br>
-                <p style="font-size: 0.9rem; margin-top: 20px;"><em>*Please note that as a volunteer-run organization, it may take 2-3 business days for us to respond to inquiries.</em></p>
+                <p style="font-size: 0.9rem; margin-top: 20px; color: #e0e0e0;"><em>*Please note that as a volunteer-run organization, it may take 2-3 business days for us to respond to inquiries.</em></p>
             </div>
 
             <div class="contact-form">
@@ -420,7 +465,7 @@
     <footer>
         <p>&copy; 2026 Marble Falls Cemetery Association. All Rights Reserved.</p>
         <p>A Registered 501(c)(3) Nonprofit Organization.</p>
-        <p>404 S AVENUE M, MARBLE FALLS, TX 78654 | support@marblefallscemeteryassoc.org</p>
+        <p>404 S AVENUE M, MARBLE FALLS, TX 78654 | <a href="mailto:support@marblefallscemeteryassoc.org" style="color: #ccc;">support@marblefallscemeteryassoc.org</a></p>
     </footer>
 
 </body>
