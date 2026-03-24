@@ -3,277 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marble Falls Cemetery Association | 501(c)(3) Heritage Preservation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Marble Falls Cemetery Association | 501(c)(3) Preservation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a3c34;      /* Deep Juniper */
-            --primary-light: #2d5a4e;
-            --accent: #d4af37;       /* Heritage Gold */
-            --bg-soft: #fcfaf7;      /* Bone Parchment */
-            --text-main: #2c2c2c;
+            --primary: #1e3a34;      /* Deep Forest */
+            --accent: #c5a059;       /* Burnished Gold */
+            --bg: #fdfcfb;           /* Ivory Parchment */
+            --text: #2d2d2d;
             --white: #ffffff;
-            --glass: rgba(255, 255, 255, 0.92);
-            --shadow: 0 20px 40px rgba(0,0,0,0.08);
-            --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            --glass: rgba(255, 255, 255, 0.95);
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+            --shadow-lg: 0 20px 50px rgba(0,0,0,0.1);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: var(--bg-soft); 
-            color: var(--text-main); 
-            line-height: 1.7; 
-            overflow-x: hidden; 
-        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; }
 
-        /* --- STICKY NAVIGATION --- */
-        nav {
+        /* --- MODERN STICKY HEADER --- */
+        header.main-nav {
             position: sticky;
             top: 0;
-            width: 100%;
-            background: var(--glass);
-            backdrop-filter: blur(12px);
             z-index: 1000;
-            padding: 1.2rem 8%;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 1rem 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            box-shadow: var(--shadow-sm);
         }
 
-        .logo-container { text-decoration: none; display: flex; align-items: center; gap: 12px; }
-        .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--primary); font-weight: 700; line-height: 1; }
-        .logo-text span { display: block; font-size: 0.75rem; font-family: 'Inter'; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-top: 4px; }
+        .brand { text-decoration: none; display: flex; flex-direction: column; }
+        .brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; color: var(--primary); line-height: 1; }
+        .brand-subtext { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2.5px; color: var(--accent); font-weight: 700; margin-top: 4px; }
 
-        .nav-links { display: flex; list-style: none; gap: 2rem; }
-        .nav-links a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
-        .nav-links a:hover { color: var(--accent); }
+        .nav-menu { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+        .nav-link { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
+        .nav-link:hover { color: var(--accent); }
 
-        .btn-donate {
+        .cta-btn {
             background: var(--primary);
-            color: var(--white) !important;
-            padding: 0.7rem 1.8rem;
-            border-radius: 4px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            box-shadow: 0 10px 20px rgba(26, 60, 52, 0.2);
-        }
-
-        .btn-donate:hover { background: var(--accent); transform: translateY(-2px); }
-
-        /* --- HERO: PARALLAX & IMPACT --- */
-        header {
-            height: 90vh;
-            background: linear-gradient(rgba(26, 60, 52, 0.6), rgba(26, 60, 52, 0.4)), 
-                        url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
             color: var(--white);
-            padding: 0 10%;
-        }
-
-        .hero-badge {
-            background: var(--accent);
-            color: var(--primary);
-            padding: 6px 20px;
-            border-radius: 100px;
-            font-weight: 800;
-            font-size: 0.75rem;
+            padding: 0.8rem 1.6rem;
+            border-radius: 2px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1.5rem;
-        }
-
-        header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 5.5rem); line-height: 1.1; margin-bottom: 20px; }
-        header p { max-width: 700px; font-size: 1.2rem; font-weight: 300; opacity: 0.9; }
-
-        /* --- NONPROFIT IMPACT SECTION --- */
-        .impact-banner {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            background: var(--white);
-            margin: -80px 10% 0;
-            position: relative;
-            z-index: 10;
-            box-shadow: var(--shadow);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .impact-stat { padding: 3rem; text-align: center; border-right: 1px solid #eee; }
-        .impact-stat h2 { color: var(--accent); font-size: 2.5rem; margin-bottom: 5px; }
-        .impact-stat p { font-weight: 600; text-transform: uppercase; font-size: 0.8rem; color: #777; }
-
-        /* --- CONTENT SECTIONS --- */
-        section { padding: 100px 10%; }
-        .section-header { text-align: center; margin-bottom: 80px; }
-        .section-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: var(--primary); }
-        .section-header .line { width: 80px; height: 4px; background: var(--accent); margin: 20px auto; }
-
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-        .about-img { border-radius: 12px; box-shadow: var(--shadow); width: 100%; height: 500px; object-fit: cover; }
-
-        /* --- SERVICES (NONPROFIT PILLARS) --- */
-        .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .pillar-card {
-            background: var(--white);
-            padding: 4rem 2rem;
-            border-radius: 12px;
-            text-align: center;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
             transition: var(--transition);
-            border-top: 6px solid var(--primary);
+            border: 1px solid var(--primary);
         }
-        .pillar-card:hover { transform: translateY(-15px); box-shadow: var(--shadow); border-top-color: var(--accent); }
-        .pillar-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 1.5rem; color: var(--primary); }
+        .cta-btn:hover { background: transparent; color: var(--primary); transform: translateY(-2px); }
 
-        /* --- POLICIES (LONG-FORM & TRANSPARENT) --- */
-        .policy-container { background: var(--primary); color: var(--white); border-radius: 20px; padding: 60px; }
-        .policy-accordion { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 25px 0; }
-        .policy-accordion h4 { color: var(--accent); font-size: 1.4rem; margin-bottom: 15px; }
-        .policy-accordion p, .policy-accordion li { font-size: 0.95rem; opacity: 0.85; margin-bottom: 10px; }
+        /* --- SECTION STYLING --- */
+        section { padding: 80px 10%; }
+        .section-title { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: var(--primary); text-align: center; margin-bottom: 50px; }
 
-        /* --- CONTACT & DONATION --- */
-        .contact-flex { display: flex; gap: 50px; background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); }
-        .contact-info { background: var(--accent); padding: 60px; width: 40%; color: var(--primary); }
-        .contact-form { padding: 60px; flex: 1; }
-        
-        input, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; }
-        .btn-submit { background: var(--primary); color: white; border: none; padding: 15px 40px; font-weight: 700; cursor: pointer; transition: var(--transition); }
-        .btn-submit:hover { background: var(--accent); color: var(--primary); }
+        /* --- CONTACT US PAGE MODULE --- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
 
-        footer { background: #0e1f1b; color: #889a95; text-align: center; padding: 60px 10%; border-top: 5px solid var(--accent); }
-        footer a { color: var(--accent); text-decoration: none; }
+        .contact-sidebar { background: var(--primary); color: var(--white); padding: 60px; }
+        .contact-sidebar h3 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--accent); margin-bottom: 20px; }
+        .contact-sidebar p { margin-bottom: 30px; opacity: 0.9; font-size: 0.95rem; }
 
-        @media (max-width: 1024px) {
-            .about-grid, .contact-flex, .impact-banner { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
-            .impact-banner { margin-top: 0; }
-            .contact-info { width: 100%; }
+        .nonprofit-info-box {
+            background: rgba(255,255,255,0.05);
+            padding: 25px;
+            border-left: 3px solid var(--accent);
+            margin-top: 40px;
+        }
+        .nonprofit-info-box h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; color: var(--accent); }
+
+        .contact-form { padding: 60px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 8px; text-transform: uppercase; color: #666; }
+        input, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; }
+        .submit-btn { background: var(--accent); color: var(--primary); border: none; padding: 15px 30px; font-weight: 800; cursor: pointer; width: 100%; transition: var(--transition); }
+        .submit-btn:hover { background: var(--primary); color: var(--white); }
+
+        /* --- ENHANCED FAT FOOTER --- */
+        footer { background: #121212; color: #b0b0b0; padding: 80px 10% 40px; }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: 40px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .footer-col h4 { color: var(--white); font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; margin-bottom: 25px; }
+        .footer-col p, .footer-col li { font-size: 0.9rem; margin-bottom: 12px; }
+        .footer-col ul { list-style: none; }
+        .footer-col a { color: #b0b0b0; text-decoration: none; transition: var(--transition); }
+        .footer-col a:hover { color: var(--accent); padding-left: 5px; }
+
+        .footer-bottom { padding-top: 40px; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; }
+        .tax-id { color: var(--accent); font-weight: 700; letter-spacing: 1px; }
+
+        @media (max-width: 968px) {
+            .nav-menu { display: none; }
+            .contact-wrapper, .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#home" class="logo-container">
-            <div class="logo-text">Marble Falls <span>Cemetery Association</span></div>
+    <header class="main-nav">
+        <a href="#home" class="brand">
+            <span class="brand-name">Marble Falls</span>
+            <span class="brand-subtext">Cemetery Association</span>
         </a>
-        <ul class="nav-links">
-            <li><a href="#about">Our Legacy</a></li>
-            <li><a href="#pillars">Mission Pillars</a></li>
-            <li><a href="#policies">Rules & Disclosures</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <a href="#contact" class="btn-donate">Make a Donation</a>
-    </nav>
-
-    <header id="home">
-        <div class="hero-badge">Est. Historical Preservation</div>
-        <h1>Preserving the Past,<br>Protecting the Future.</h1>
-        <p>A community-led 501(c)(3) nonprofit dedicated to the perpetual care and dignity of the Marble Falls sacred grounds.</p>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">Our Heritage</a></li>
+                <li><a href="#policies" class="nav-link">Rules & Policies</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#donate" class="cta-btn">Support Us</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <div class="impact-banner">
-        <div class="impact-stat"><h2>100%</h2><p>Donor Funded</p></div>
-        <div class="impact-stat"><h2>Volunteers</h2><p>Community Driven</p></div>
-        <div class="impact-stat"><h2>Historical</h2><p>Restoration Focus</p></div>
-    </div>
-
-    <section id="about">
-        <div class="about-grid">
-            <div>
-                <div class="section-header" style="text-align: left;">
-                    <h2>A Non-Profit Legacy</h2>
-                    <div class="line" style="margin-left: 0;"></div>
-                </div>
-                <p>The <strong>Marble Falls Cemetery Association</strong> is not a commercial venture. We are a registered 501(c)(3) nonprofit organization serving as the perpetual stewards of our community's history. Our board consists of dedicated volunteers who receive no compensation—only the satisfaction of honoring our ancestors.</p>
-                <br>
-                <p>As a non-profit, we rely entirely on plot sales and tax-deductible donations to maintain the landscaping, infrastructure, and historical integrity of these grounds. Every dollar stays within the cemetery to ensure it remains a place of peace for the next century.</p>
-            </div>
-            <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=800&q=80" class="about-img" alt="Serene Sunlight">
-        </div>
-    </section>
-
-    <section id="pillars" style="background: #f0f3f1;">
-        <div class="section-header">
-            <h2>Our Non-Profit Pillars</h2>
-            <div class="line"></div>
-        </div>
-        <div class="pillar-grid">
-            <div class="pillar-card">
-                <h3>Perpetual Care</h3>
-                <p>Ensuring the grass, trees, and pathways are meticulously maintained through our specialized endowment fund.</p>
-            </div>
-            <div class="pillar-card">
-                <h3>Heritage Guard</h3>
-                <p>Restoring damaged 19th-century headstones and monuments to protect the genealogical history of Marble Falls.</p>
-            </div>
-            <div class="pillar-card">
-                <h3>Open Records</h3>
-                <p>Providing free access to burial records and maps for families and historical researchers across Texas.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="policies">
-        <div class="policy-container">
-            <div class="section-header">
-                <h2 style="color: white;">Official Policies & Rules</h2>
-                <div class="line"></div>
-            </div>
-            
-            <div class="policy-accordion">
-                <h4>501(c)(3) Disclosure & Governance</h4>
-                <p>Donations to the Marble Falls Cemetery Association are tax-deductible to the extent allowed by law. Our financial records are available for review by donors and members upon written request. We are governed by a volunteer Board of Trustees committed to transparency.</p>
-            </div>
-
-            <div class="policy-accordion">
-                <h4>Grounds & Visitation Rules</h4>
-                <ul>
-                    <li><strong>Visitation:</strong> Strictly prohibited after sunset (Dawn to Dusk only).</li>
-                    <li><strong>Decorations:</strong> To facilitate maintenance, glass containers and permanent fences are not permitted. Artificial flowers must be removed when they become weathered.</li>
-                    <li><strong>Conduct:</strong> This is a sacred ground. Loud music, littering, and unauthorized commercial photography are strictly prohibited.</li>
-                </ul>
-            </div>
-
-            <div class="policy-accordion">
-                <h4>Privacy & Data Policy</h4>
-                <p>We respect the privacy of our families and donors. We never sell, rent, or share personal contact information with third-party marketing firms. Information collected is used solely for plot records and nonprofit communication.</p>
-            </div>
-        </div>
+    <section id="home" style="height: 40vh; display: flex; align-items: center; justify-content: center; background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1920&q=80') center/cover;">
+        <h1 style="color: white; font-family: 'Cormorant Garamond'; font-size: 4rem; text-shadow: 0 4px 10px rgba(0,0,0,0.5);">A Legacy of Honor</h1>
     </section>
 
     <section id="contact">
-        <div class="contact-flex">
-            <div class="contact-info">
-                <h2 style="font-family: 'Cormorant Garamond'; font-size: 2.5rem;">Support Our Mission</h2>
-                <p style="margin: 20px 0;">Your contributions ensure the cemetery remains beautiful forever. Reach out for plot inquiries or donation receipts.</p>
-                <p><strong>Office:</strong> 404 S Avenue M, Marble Falls, TX</p>
-                <p><strong>Email:</strong> support@marblefallscemeteryassoc.org</p>
-                <div style="margin-top: 40px; border-top: 1px solid rgba(26,60,52,0.2); padding-top: 20px;">
-                    <small>All donations are 100% Tax Deductible.</small>
+        <h2 class="section-title">Connect With the Association</h2>
+        <div class="contact-wrapper">
+            <div class="contact-sidebar">
+                <h3>Our Mission</h3>
+                <p>As a volunteer-led 501(c)(3), our mission is the perpetual care and historical preservation of Marble Falls' sacred grounds. Your inquiries help us maintain this standard.</p>
+                
+                <div class="nonprofit-info-box">
+                    <h4>Tax-Exempt Status</h4>
+                    <p>All contributions are tax-deductible. We operate transparently under IRS regulations for the public benefit of our community.</p>
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <p><strong>Location:</strong> 404 S Avenue M, Marble Falls, TX 78654</p>
+                    <p><strong>Email:</strong> support@marblefallscemeteryassoc.org</p>
                 </div>
             </div>
+
             <div class="contact-form">
-                <form onsubmit="event.preventDefault(); alert('Nonprofit Inquiry Received. We will contact you shortly.');">
-                    <input type="text" placeholder="Full Name" required>
-                    <input type="email" placeholder="Email Address" required>
-                    <textarea rows="5" placeholder="How can our association help you?"></textarea>
-                    <button type="submit" class="btn-submit">Send Inquiry</button>
+                <form onsubmit="event.preventDefault(); alert('Inquiry sent to the Board of Trustees.');">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nature of Inquiry</label>
+                        <select style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;">
+                            <option>Plot Purchase/Inquiry</option>
+                            <option>Donation/501(c)(3) Receipt</option>
+                            <option>Genealogy/Historical Records</option>
+                            <option>Maintenance Report</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Message</label>
+                        <textarea rows="4" placeholder="How can we assist you?"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Secure Message</button>
                 </form>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Marble Falls Cemetery Association | A 501(c)(3) Nonprofit</p>
-        <p>Managed by Volunteers | <a href="mailto:support@marblefallscemeteryassoc.org">Email the Board</a></p>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4 style="color: var(--accent);">Marble Falls Cemetery</h4>
+                <p>Dedicated to the preservation of Texas heritage and the dignified rest of our community since our founding. We are a non-profit association run by volunteers.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About the Board</a></li>
+                    <li><a href="#records">Burial Records</a></li>
+                    <li><a href="#policies">Rules & Regulations</a></li>
+                    <li><a href="#donate">Planned Giving</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Donor Rights</a></li>
+                    <li><a href="#">Volunteer Sign-up</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support the Mission</h4>
+                <p>Your 501(c)(3) tax-deductible donation directly funds the maintenance and restoration of our historic grounds.</p>
+                <a href="#donate" class="cta-btn" style="display: inline-block; margin-top: 10px;">Donate Now</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>
+                &copy; 2026 Marble Falls Cemetery Association. All Rights Reserved.
+            </div>
+            <div class="tax-id">
+                NONPROFIT TAX ID: 501(c)(3) EXEMPT
+            </div>
+            <div>
+                Designed for Historical Preservation
+            </div>
+        </div>
     </footer>
 
 </body>
