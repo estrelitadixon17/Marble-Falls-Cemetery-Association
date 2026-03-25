@@ -3,236 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marble Falls Cemetery Association | 501(c)(3) Heritage</title>
+    <title>Marble Falls Cemetery Association | Legacy & Grace</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --forest: #1a2f23;
-            --gold: #c5a059;
-            --cream: #fdfbf7;
+            --gold: #D4AF37;
+            --obsidian: #0A0A0A;
+            --paper: #F9F7F2;
         }
-        .bg-forest { background-color: var(--forest); }
-        .text-gold { color: var(--gold); }
-        .border-gold { border-color: var(--gold); }
+        body { font-family: 'Inter', sans-serif; background-color: var(--paper); }
+        .serif-display { font-family: 'Bodoni Moda', serif; }
         
-        /* Sticky & Glassmorphism */
-        .sticky-glass {
-            background: rgba(26, 47, 35, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+        .sticky-header {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: saturate(180%) blur(20px);
         }
 
-        /* Custom Decorative Elements */
-        .ornament {
-            width: 100px;
-            height: 1px;
-            background: var(--gold);
-            display: inline-block;
-            vertical-align: middle;
+        /* Diagonal Section Cut */
+        .diagonal-box {
+            clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
         }
 
-        /* Animation for long scroll */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--obsidian); }
+        ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+        .vertical-text { writing-mode: vertical-rl; }
+        
+        .image-reveal {
+            transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1);
         }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .image-reveal:hover { transform: scale(1.05); }
     </style>
 </head>
-<body class="bg-[#fdfbf7] text-[#2d3436] font-serif">
+<body class="overflow-x-hidden">
 
-    <nav class="fixed top-0 w-full z-50 transition-all duration-300 sticky-glass">
-        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+    <div class="fixed left-0 top-0 h-full w-16 hidden lg:flex flex-col items-center justify-between py-10 border-r border-slate-200 z-50 bg-white">
+        <div class="text-gold font-black text-xl italic">M</div>
+        <div class="vertical-text uppercase tracking-[0.5em] text-[10px] font-bold text-slate-400">
+            Scroll to Explore Heritage
+        </div>
+        <div class="flex flex-col gap-6 text-slate-400">
+            <i class="fab fa-facebook-f hover:text-gold cursor-pointer"></i>
+            <i class="fas fa-envelope hover:text-gold cursor-pointer"></i>
+        </div>
+    </div>
+
+    <nav class="fixed top-0 w-full z-40 sticky-header py-6">
+        <div class="max-w-[1400px] mx-auto px-10 flex justify-between items-center text-white">
             <div class="flex flex-col">
-                <span class="text-gold font-bold tracking-[0.3em] text-sm uppercase">Marble Falls</span>
-                <span class="text-white font-light text-xs tracking-widest uppercase">Cemetery Association</span>
+                <span class="serif-display italic text-2xl leading-none text-gold">Marble Falls</span>
+                <span class="text-[10px] uppercase tracking-[0.4em] font-light">Cemetery Association</span>
             </div>
-            
-            <div class="hidden lg:flex items-center space-x-10 text-[10px] tracking-[0.2em] font-bold text-white uppercase">
-                <a href="#heritage" class="hover:text-gold transition">Our Heritage</a>
-                <a href="#mission" class="hover:text-gold transition">The Mission</a>
-                <a href="#giving" class="hover:text-gold transition">Tax-Deductible Giving</a>
+            <div class="hidden md:flex gap-12 text-[11px] uppercase tracking-[0.2em] font-semibold">
+                <a href="#about" class="hover:text-gold transition">The History</a>
+                <a href="#impact" class="hover:text-gold transition">Community Impact</a>
+                <a href="#transparency" class="hover:text-gold transition">501(c)(3) Transparency</a>
                 <a href="#contact" class="hover:text-gold transition">Contact</a>
-                <a href="#donate" class="bg-gold px-6 py-3 text-forest rounded-sm hover:bg-white transition">Donate Now</a>
             </div>
+            <a href="#donate" class="bg-gold text-obsidian px-8 py-3 font-black text-[10px] uppercase tracking-widest hover:bg-white transition">Support Us</a>
         </div>
     </nav>
 
-    <section class="min-h-screen flex flex-col lg:flex-row pt-24">
-        <div class="lg:w-1/2 bg-forest p-12 lg:p-24 flex flex-col justify-center text-white">
-            <div class="mb-6 flex items-center gap-4">
-                <span class="ornament"></span>
-                <span class="text-gold font-bold tracking-widest text-xs uppercase">Nonprofit 501(c)(3)</span>
-            </div>
-            <h1 class="text-5xl lg:text-7xl font-light leading-tight mb-8">Where History <br><span class="italic font-serif">Rests in Beauty.</span></h1>
-            <p class="text-lg text-slate-300 mb-12 max-w-md leading-relaxed">
-                Since 1882, we have served as the silent historians of Marble Falls, Texas. Preserving the dignity of our ancestors through community stewardship.
-            </p>
-            <div class="flex gap-6">
-                <a href="#contact" class="border border-gold px-8 py-4 text-gold hover:bg-gold hover:text-forest transition font-bold uppercase text-xs tracking-widest">Inquire About Plots</a>
-            </div>
+    <section class="relative h-screen flex items-center justify-center overflow-hidden bg-obsidian">
+        <div class="absolute inset-0 opacity-40">
+            <img src="https://images.unsplash.com/photo-1469050624972-f03b8678e363?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover">
         </div>
-        <div class="lg:w-1/2 relative overflow-hidden h-96 lg:h-auto">
-            <img src="https://images.unsplash.com/photo-1528114039593-4366cc08227d?auto=format&fit=crop&q=80&w=1200" alt="Cemetery View" class="absolute inset-0 w-full h-full object-cover">
-            <div class="absolute inset-0 bg-forest/20"></div>
-        </div>
-    </section>
-
-    <section id="heritage" class="py-32 px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-gold text-sm font-bold tracking-[0.4em] uppercase mb-4">Our Foundation</h2>
-            <h3 class="text-4xl lg:text-5xl mb-12">The Pillars of Preservation</h3>
-            <p class="text-xl text-slate-600 leading-relaxed italic">
-                "A cemetery is the history of a community written in stone."
-            </p>
-        </div>
-        
-        <div class="max-w-7xl mx-auto mt-24 grid md:grid-cols-3 gap-16">
-            <div class="reveal">
-                <div class="text-gold text-6xl font-light mb-6">01.</div>
-                <h4 class="text-xl font-bold mb-4 uppercase tracking-tighter">Perpetual Care</h4>
-                <p class="text-slate-500 leading-relaxed">We manage an endowment fund designed to ensure the landscape remains pristine for centuries to come, regardless of future economic shifts.</p>
-            </div>
-            <div class="reveal">
-                <div class="text-gold text-6xl font-light mb-6">02.</div>
-                <h4 class="text-xl font-bold mb-4 uppercase tracking-tighter">Tax-Exempt Status</h4>
-                <p class="text-slate-500 leading-relaxed">As a verified 501(c)(3), we operate with total transparency. EIN: 81-5280617. All contributions directly fund the grounds.</p>
-            </div>
-            <div class="reveal">
-                <div class="text-gold text-6xl font-light mb-6">03.</div>
-                <h4 class="text-xl font-bold mb-4 uppercase tracking-tighter">Community History</h4>
-                <p class="text-slate-500 leading-relaxed">From the earliest settlers to modern-day neighbors, we maintain the records and markers that define our regional identity.</p>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="serif-display text-white text-7xl md:text-[12rem] leading-none mb-4">Eternity.</h1>
+            <p class="text-gold font-light tracking-[1em] uppercase text-sm md:text-xl">Preserved in Stone & Spirit</p>
+            <div class="mt-20">
+                <a href="#about" class="inline-block border border-white/20 p-8 rounded-full hover:border-gold transition group">
+                    <i class="fas fa-arrow-down text-white group-hover:text-gold animate-bounce"></i>
+                </a>
             </div>
         </div>
     </section>
 
-    <section id="mission" class="bg-forest py-32 text-white">
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
-            <div class="space-y-8">
-                <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&q=80&w=800" class="rounded-sm border-8 border-gold/20 shadow-2xl" alt="Historic Archive">
-                <div class="p-8 bg-white/5 border-l-4 border-gold">
-                    <p class="italic text-slate-300">"Our mission is to provide a serene, dignified, and beautiful resting place while honoring the diverse history of Marble Falls."</p>
+    <section id="about" class="py-32 bg-white relative">
+        <div class="max-w-[1400px] mx-auto px-10">
+            <div class="grid lg:grid-cols-12 gap-10 items-end mb-32">
+                <div class="lg:col-span-7">
+                    <span class="text-gold font-bold text-xs uppercase tracking-widest mb-4 block">Our Identity</span>
+                    <h2 class="serif-display text-5xl md:text-8xl text-obsidian leading-tight">A 501(c)(3) Stewardship Since 1882</h2>
+                </div>
+                <div class="lg:col-span-5 pb-4">
+                    <p class="text-slate-500 text-xl leading-relaxed">As a federally recognized nonprofit, our mission transcends business. We are the custodians of Marble Falls' heartbeat—preserving the final resting place of pioneers, veterans, and visionaries.</p>
                 </div>
             </div>
-            <div>
-                <h2 class="text-5xl font-light mb-10 leading-tight">A Commitment to <span class="text-gold">Endless</span> Stewardship</h2>
-                <div class="space-y-6 text-slate-400 leading-relaxed">
-                    <p>The Marble Falls Cemetery Association is a volunteer-led effort. We understand that a cemetery is more than a piece of land; it is a park of memories, a place for genealogical research, and a sanctuary for the grieving.</p>
-                    <p>Our focus includes the restoration of weathered headstones, the planting of native Texas flora to provide shade and beauty, and the digitalization of burial records to assist families in finding their loved ones.</p>
-                    <p>We work closely with local veterans groups to ensure that every soldier's grave is recognized and honored with the respect they earned through service.</p>
-                </div>
-                <div class="mt-12">
-                    <a href="#donate" class="text-gold font-bold uppercase tracking-widest text-sm border-b-2 border-gold pb-2 hover:text-white hover:border-white transition">Support our ongoing projects</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="giving" class="py-32 bg-[#f4f1ea]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="bg-white p-12 lg:p-24 shadow-sm border border-slate-200">
-                <div class="grid lg:grid-cols-2 gap-16">
-                    <div>
-                        <h2 class="text-3xl font-bold mb-6 uppercase tracking-tight">The 501(c)(3) Advantage</h2>
-                        <p class="text-slate-600 mb-8">Your support keeps our gates open and our grass green. Because we are a registered nonprofit, your donations offer significant tax advantages.</p>
-                        <div class="space-y-4">
-                            <div class="flex items-center gap-4">
-                                <i class="fas fa-file-invoice-dollar text-gold"></i>
-                                <span class="font-bold">IRS Registered EIN: 81-5280617</span>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <i class="fas fa-certificate text-gold"></i>
-                                <span class="font-bold">Certificate of Perpetual Care</span>
-                            </div>
+            <div class="grid lg:grid-cols-2 gap-20 items-center mb-32">
+                <div class="overflow-hidden rounded-sm">
+                    <img src="https://images.unsplash.com/photo-151121100343-189ca56134c0?auto=format&fit=crop&q=80&w=1000" class="image-reveal w-full grayscale hover:grayscale-0 transition duration-1000" alt="Landscape">
+                </div>
+                <div class="lg:pl-20">
+                    <h3 class="serif-display text-4xl mb-6 italic">Perpetual Care & Dignity</h3>
+                    <p class="text-slate-600 mb-8 leading-loose">The Marble Falls Cemetery Association ensures that every inch of our sacred ground is maintained with the highest standards of arboriculture and landscaping. Our EIN (81-5280617) stands as a badge of our commitment to public accountability and community service.</p>
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                            <span class="text-3xl font-black block mb-2">140+</span>
+                            <span class="text-[10px] uppercase font-bold text-slate-400">Years of History</span>
+                        </div>
+                        <div>
+                            <span class="text-3xl font-black block mb-2">100%</span>
+                            <span class="text-[10px] uppercase font-bold text-slate-400">Community Funded</span>
                         </div>
                     </div>
-                    <div class="bg-forest p-10 text-white rounded-sm">
-                        <h3 class="text-gold text-xl font-bold mb-4 uppercase tracking-widest">Giving Policy</h3>
-                        <p class="text-sm text-slate-400 mb-6 leading-relaxed">
-                            100% of public donations are allocated to the General Maintenance Fund. We maintain rigorous accounting standards to ensure your gift is used exactly as intended. Acknowledgement letters for tax purposes are mailed within 30 days of receipt.
-                        </p>
-                        <a href="mailto:support@marblefallscemeteryassoc.org" class="text-white underline font-bold">Request Financial Report</a>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-32 px-6">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24">
-            <div>
-                <h2 class="text-4xl mb-8 uppercase tracking-widest">Visit Us</h2>
-                <div class="space-y-10">
-                    <div>
-                        <h4 class="text-gold font-bold text-xs uppercase mb-2 tracking-widest">Address</h4>
-                        <p class="text-2xl font-light">404 S AVENUE M<br>MARBLE FALLS, TX 78654</p>
-                    </div>
-                    <div>
-                        <h4 class="text-gold font-bold text-xs uppercase mb-2 tracking-widest">Inquiries</h4>
-                        <p class="text-2xl font-light">support@marblefallscemeteryassoc.org</p>
-                    </div>
+    <section id="impact" class="bg-obsidian py-32 diagonal-box">
+        <div class="max-w-[1400px] mx-auto px-10">
+            <h2 class="text-center serif-display text-white text-5xl mb-24">Our Community Initiatives</h2>
+            <div class="grid md:grid-cols-3 gap-0 border border-white/10">
+                <div class="p-16 border-r border-white/10 hover:bg-gold transition group cursor-default">
+                    <i class="fas fa-flag text-gold group-hover:text-obsidian text-3xl mb-8"></i>
+                    <h4 class="text-white group-hover:text-obsidian text-2xl font-bold mb-4">Veteran Honor</h4>
+                    <p class="text-slate-400 group-hover:text-obsidian/80 text-sm leading-relaxed">We coordinate with local VFW posts to ensure every veteran's grave is meticulously marked and honored during national holidays.</p>
                 </div>
-            </div>
-            <div class="bg-white border-t-4 border-gold p-12 shadow-2xl">
-                <h3 class="text-xl font-bold mb-8 uppercase tracking-widest">Contact the Board</h3>
-                <form class="space-y-6">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <input type="text" placeholder="First Name" class="w-full border-b border-slate-300 py-3 focus:border-gold outline-none transition bg-transparent">
-                        <input type="text" placeholder="Last Name" class="w-full border-b border-slate-300 py-3 focus:border-gold outline-none transition bg-transparent">
-                    </div>
-                    <input type="email" placeholder="Email Address" class="w-full border-b border-slate-300 py-3 focus:border-gold outline-none transition bg-transparent">
-                    <textarea rows="4" placeholder="How can we assist you today?" class="w-full border-b border-slate-300 py-3 focus:border-gold outline-none transition bg-transparent"></textarea>
-                    <button class="w-full bg-forest text-gold font-bold py-5 uppercase tracking-[0.3em] hover:bg-black transition">Send Message</button>
-                </form>
+                <div class="p-16 border-r border-white/10 hover:bg-emerald-600 transition group cursor-default">
+                    <i class="fas fa-seedling text-emerald-500 group-hover:text-white text-3xl mb-8"></i>
+                    <h4 class="text-white group-hover:text-white text-2xl font-bold mb-4">Green Preservation</h4>
+                    <p class="text-slate-400 group-hover:text-white/80 text-sm leading-relaxed">Utilizing native Texas flora to create a self-sustaining ecosystem that provides a peaceful haven for families and wildlife.</p>
+                </div>
+                <div class="p-16 hover:bg-blue-600 transition group cursor-default">
+                    <i class="fas fa-database text-blue-500 group-hover:text-white text-3xl mb-8"></i>
+                    <h4 class="text-white group-hover:text-white text-2xl font-bold mb-4">Digital Archives</h4>
+                    <p class="text-slate-600 group-hover:text-white/80 text-sm leading-relaxed">Free public access to digital burial records and historical documents to aid in genealogical research.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-forest text-white py-24 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-3 gap-20 mb-20">
-                <div>
-                    <h5 class="text-gold font-bold uppercase text-xs tracking-[0.3em] mb-6">Legal Transparency</h5>
-                    <p class="text-xs text-slate-400 leading-loose">
-                        The Marble Falls Cemetery Association is a 501(c)(3) nonprofit. Contributions are deductible to the extent permitted by law. We operate in accordance with the Texas Health and Safety Code Chapter 712 regarding Perpetual Care Cemeteries.
-                    </p>
+    <section id="transparency" class="py-32 px-10">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="serif-display text-5xl mb-6">Financial Transparency</h2>
+                <div class="w-20 h-1 bg-gold mx-auto mb-10"></div>
+                <p class="text-slate-500 italic font-medium">"As a 501(c)(3) entity, our books are as open as our gates."</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 text-sm leading-loose text-slate-600">
+                <div class="bg-white p-10 border-t-2 border-gold shadow-sm">
+                    <h4 class="font-black text-obsidian uppercase tracking-widest mb-4">Privacy & Data</h4>
+                    <p>We collect only essential data for donation receipts and plot management. We never share donor information with third-party solicitors. Your trust is our most valuable asset.</p>
                 </div>
-                <div>
-                    <h5 class="text-gold font-bold uppercase text-xs tracking-[0.3em] mb-6">Privacy Policy</h5>
-                    <p class="text-xs text-slate-400 leading-loose">
-                        We value your privacy. Personal data collected via this website is used strictly for internal association business. We do not sell, rent, or share our donor lists or family records with outside marketing firms.
-                    </p>
-                </div>
-                <div>
-                    <h5 class="text-gold font-bold uppercase text-xs tracking-[0.3em] mb-6">Terms of Use</h5>
-                    <p class="text-xs text-slate-400 leading-loose">
-                        Content on this site is for informational purposes. While we strive for accuracy in our digital burial records, the physical ledger at our main office remains the final authority for all legal site locations.
-                    </p>
+                <div class="bg-white p-10 border-t-2 border-gold shadow-sm">
+                    <h4 class="font-black text-obsidian uppercase tracking-widest mb-4">Donation Policy</h4>
+                    <p>All contributions to the Marble Falls Cemetery Association are tax-deductible. Funds are used exclusively for perpetual care, restoration, and historical archiving projects.</p>
                 </div>
             </div>
-            <div class="text-center pt-20 border-t border-white/10">
-                <p class="text-[10px] text-slate-500 tracking-[0.4em] uppercase">© 2026 Marble Falls Cemetery Association | EIN 81-5280617</p>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-obsidian pt-32 pb-10 text-white">
+        <div class="max-w-[1400px] mx-auto px-10">
+            <div class="grid lg:grid-cols-2 gap-32 mb-20">
+                <div>
+                    <h2 class="serif-display text-6xl mb-12">Connect With The <span class="text-gold">Keepers.</span></h2>
+                    <div class="space-y-12">
+                        <div>
+                            <span class="text-gold uppercase tracking-widest text-xs block mb-4">Mailing Address</span>
+                            <p class="text-3xl font-light">404 S AVENUE M<br>MARBLE FALLS, TX 78654</p>
+                        </div>
+                        <div>
+                            <span class="text-gold uppercase tracking-widest text-xs block mb-4">Direct Email</span>
+                            <p class="text-3xl font-light underline decoration-gold underline-offset-8">support@marblefallscemeteryassoc.org</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -top-10 -left-10 text-[10rem] text-white/5 font-black hidden lg:block">MFCA</div>
+                    <form class="space-y-10 relative z-10">
+                        <input type="text" placeholder="Full Name" class="w-full bg-transparent border-b border-white/20 py-4 focus:border-gold outline-none transition">
+                        <input type="email" placeholder="Email Address" class="w-full bg-transparent border-b border-white/20 py-4 focus:border-gold outline-none transition">
+                        <textarea rows="4" placeholder="Your Message" class="w-full bg-transparent border-b border-white/20 py-4 focus:border-gold outline-none transition"></textarea>
+                        <button class="bg-white text-obsidian font-black px-12 py-5 uppercase tracking-widest hover:bg-gold transition">Send Inquiry</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-[0.3em] text-slate-500">
+                <p>© 2026 Marble Falls Cemetery Association. EIN: 81-5280617</p>
+                <div class="flex gap-10 mt-6 md:mt-0">
+                    <a href="#" class="hover:text-white transition">IRS Form 990</a>
+                    <a href="#" class="hover:text-white transition">Bylaws</a>
+                    <a href="#" class="hover:text-white transition">Accessibility</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Simple Scroll Reveal Logic
-        window.addEventListener('scroll', () => {
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(el => {
-                const windowHeight = window.innerHeight;
-                const revealTop = el.getBoundingClientRect().top;
-                if (revealTop < windowHeight - 100) {
-                    el.classList.add('active');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
